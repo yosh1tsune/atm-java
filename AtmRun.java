@@ -1,16 +1,19 @@
-import java.util.Scanner;
 import models.*;
+import controllers.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class AtmRun {
-  public static void main(String[] args){
-    Atm.addAtm("Bariloche");
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-    ArrayList<String> atms = Atm.getAtm();
-    for (String atm: atms) {
-      System.out.println(atm);
+    String input = scanner.nextLine();
+
+    if (input.equals("caixa")) {
+      RechargesController.recharge(input);
+    }
+    else if (input.equals("saque")) {
+      WithdrawalsController.withdrawal(input);
     }
   }
 }
