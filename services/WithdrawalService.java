@@ -1,13 +1,15 @@
 package services;
 
-public class WithdrawalService {
-  public String withdrawal;
+import models.Withdraw;
 
-  public WithdrawalService(String withdrawal) {
+public class WithdrawalService {
+  public Withdraw withdrawal;
+
+  public WithdrawalService(Withdraw withdrawal) {
     this.withdrawal = withdrawal;
   }
 
   public void execute() {
-    System.out.println("WithdrawalService");
+    System.out.println(withdrawal);
   }
 }
