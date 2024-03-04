@@ -1,0 +1,8 @@
+{
+  "cSpell.words": [
+    "atms"
+  ],
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+  ]
+}
