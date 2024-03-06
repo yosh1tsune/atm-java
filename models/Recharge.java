@@ -2,10 +2,28 @@ package models;
 
 import java.util.ArrayList;
 
-public class Recharge {
-  public static ArrayList<String> recharges = new ArrayList<>();
+import org.json.JSONObject;
 
-  public void save(String recharge) {
+public class Recharge {
+  private static ArrayList<Recharge> recharges = new ArrayList<>();
+
+  private Boolean status;
+  private JSONObject notes;
+
+  public Recharge(Boolean status, JSONObject notes) {
+    this.status = status;
+    this.notes = notes;
+  }
+
+  public Boolean getStatus() {
+    return status;
+  }
+
+  public JSONObject getNotes() {
+    return notes;
+  }
+
+  public void save(Recharge recharge) {
     recharges.add(recharge);
   }
 }
