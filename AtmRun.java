@@ -5,11 +5,9 @@ import org.json.*;
 
 public class AtmRun {
   public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    String input;
     try {
-      Scanner scanner = new Scanner(System.in);
-
-      String input;
-
       do {
         input = scanner.nextLine();
 
@@ -22,9 +20,12 @@ public class AtmRun {
           WithdrawalsController.withdrawal(json.getJSONObject("saque"));
         }
       } while (input != "exit");
+
     } catch (Exception e) {
       System.out.println(e.getMessage());
       System.out.println(e.getStackTrace());
+    } finally {
+      scanner.close();
     }
   }
 }
