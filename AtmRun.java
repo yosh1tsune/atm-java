@@ -1,7 +1,7 @@
 import controllers.*;
 
 import java.util.Scanner;
-import org.json.*;
+import org.json.JSONObject;
 
 public class AtmRun {
   public static void main(String[] args) {

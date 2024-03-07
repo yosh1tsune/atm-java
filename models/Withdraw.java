@@ -18,6 +18,10 @@ public class Withdraw {
     this.time = time;
   }
 
+  public int getValue() {
+    return value;
+  }
+
   public String toString() {
     return String.format("%nValor do Saque: %d%nHorário: %2$td/%2$tm/%2$tY %2$TT", value, time);
   }

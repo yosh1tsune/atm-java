@@ -6,12 +6,14 @@ import org.json.JSONObject;
 public class Atm {
   private static ArrayList<Atm> atms = new ArrayList<>();
 
-  public static final String[] POSSIBLE_NOTES = {
-      "notasDez",
-      "notasVinte",
-      "notasCinquenta",
-      "notasCem"
-    };
+  public static final ArrayList<JSONObject> POSSIBLE_NOTES = new ArrayList<JSONObject> () {
+    {
+      add(new JSONObject("{ name: notasCem, nominal_value: 100 }"));
+      add(new JSONObject("{ name: notasCinquenta, nominal_value: 50 }"));
+      add(new JSONObject("{ name: notasVinte, nominal_value: 20 }"));
+      add(new JSONObject("{ name: notasDez, nominal_value: 10 }"));
+    }
+  };
 
   private String name;
   private Boolean status;
@@ -61,16 +63,16 @@ public class Atm {
   }
 
   public void removeNotes(JSONObject usedNotes) {
-    for(String note : POSSIBLE_NOTES) {
-      notes.put(note, notes.getInt(note) - usedNotes.getInt(note));
+    for(String key : usedNotes.keySet()) {
+      notes.put(key, notes.getInt(key) - usedNotes.getInt(key));
     }
 
     save();
   }
 
   public void addNotes(JSONObject newNotes) {
-    for(String note : POSSIBLE_NOTES) {
-      notes.put(note, notes.getInt(note) + newNotes.getInt(note));
+    for(String key : newNotes.keySet()) {
+      notes.put(key, notes.getInt(key) + newNotes.getInt(key));
     }
 
     save();
@@ -78,5 +80,9 @@ public class Atm {
 
   public void save() {
     atms.add(this);
+  }
+
+  public int valueAvailable() {
+    return (notes.getInt("notasDez") * 10) + (notes.getInt("notasVinte") * 20) * (notes.getInt("notasCinquenta") * 50) * (notes.getInt("notasCem") * 100);
   }
 }
