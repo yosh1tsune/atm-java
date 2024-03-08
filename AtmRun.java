@@ -20,10 +20,7 @@ public class AtmRun {
           WithdrawalsController.withdrawal(json.getJSONObject("saque"));
         }
       } while (input != "exit");
-
     } catch (Exception e) {
-      System.out.println(e.getMessage());
-      System.out.println(e.getStackTrace());
     } finally {
       scanner.close();
     }

@@ -2,6 +2,7 @@ package controllers;
 
 import models.Atm;
 import models.Recharge;
+import models.errors.ATMUnderUseException;
 import services.RechargeATMService;
 
 import org.json.*;
@@ -20,7 +21,7 @@ public class RechargesController {
       service.execute();
 
       render(atm);
-    } catch (Exception e) {
+    } catch (ATMUnderUseException e) {
       render(atm, e.getMessage());
     }
   }
@@ -37,11 +38,13 @@ public class RechargesController {
   public static void render(Atm atm) {
     System.out.println();
     System.out.println(atm.toJson());
+    System.out.println();
   }
   public static void render(Atm atm, String message) {
     JSONObject json = atm.toJson().getJSONObject("caixa").append("erros", message);
 
     System.out.println();
     System.out.println(json);
+    System.out.println();
   }
 }

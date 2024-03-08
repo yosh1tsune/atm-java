@@ -83,6 +83,6 @@ public class Atm {
   }
 
   public int valueAvailable() {
-    return (notes.getInt("notasDez") * 10) + (notes.getInt("notasVinte") * 20) * (notes.getInt("notasCinquenta") * 50) * (notes.getInt("notasCem") * 100);
+    return (notes.getInt("notasDez") * 10) + (notes.getInt("notasVinte") * 20) + (notes.getInt("notasCinquenta") * 50) + (notes.getInt("notasCem") * 100);
   }
 }

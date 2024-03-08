@@ -2,6 +2,7 @@ package services;
 
 import models.Atm;
 import models.Recharge;
+import models.errors.ATMUnderUseException;
 
 public class RechargeATMService {
   private Recharge recharge;
@@ -12,9 +13,9 @@ public class RechargeATMService {
     this.atm = atm;
   }
 
-  public void execute() throws Exception {
+  public void execute() throws ATMUnderUseException {
     if (atm.getStatus() == true)
-      throw new Exception("caixa-em-uso");
+      throw new ATMUnderUseException();
 
     updateAtm(atm);
   }

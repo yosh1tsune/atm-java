@@ -1,6 +1,7 @@
 package services;
 
 import models.Withdraw;
+import models.errors.ValueUnavailableException;
 
 import org.json.JSONObject;
 
@@ -16,9 +17,10 @@ public class WithdrawalService {
     this.atm = atm;
   }
 
-  public void execute() throws Exception {
-    if (withdraw.getValue() > atm.valueAvailable() || (withdraw.getValue() % 10) != 0 )
-      throw new Exception("valor-indisponivel");
+  public void execute() throws ValueUnavailableException {
+    if (withdraw.getValue() > atm.valueAvailable() || (withdraw.getValue() % 10) != 0 ) {
+      throw new ValueUnavailableException();
+    }
 
     selectNotes();
   }
@@ -32,7 +34,6 @@ public class WithdrawalService {
       while(dummyValue >= possibleNotes.getInt("nominal_value")) {
         notesQuantity = 0;
         if (dummyValue >= possibleNotes.getInt("nominal_value") && atm.getNotes().getInt("notasCem") > 0) {
-          System.out.println(possibleNotes);
           notesQuantity = dummyValue / possibleNotes.getInt("nominal_value");
           usedNotes.put(possibleNotes.getString("name"), notesQuantity);
           dummyValue -= notesQuantity * possibleNotes.getInt("nominal_value");
