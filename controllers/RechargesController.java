@@ -7,7 +7,7 @@ import services.RechargeATMService;
 
 import org.json.*;
 
-public class RechargesController {
+public class RechargesController extends ApplicationController {
   private static Atm atm;
 
   public static void recharge(JSONObject json){
@@ -16,9 +16,7 @@ public class RechargesController {
 
       Recharge recharge = new Recharge(json.getBoolean("caixaDisponivel"), json.getJSONObject("notas"));
 
-      RechargeATMService service = new RechargeATMService(recharge, atm);
-
-      service.execute();
+      new RechargeATMService(recharge, atm).execute();
 
       render(atm);
     } catch (ATMUnderUseException e) {
@@ -27,24 +25,9 @@ public class RechargesController {
   }
 
   public static Atm atm(String name) {
-    Atm atm = Atm.find(name);
-
-    if (atm != null)
-      return atm;
-    else
+    if (Atm.getAtms().isEmpty())
       return Atm.create();
-  }
-
-  public static void render(Atm atm) {
-    System.out.println();
-    System.out.println(atm.toJson());
-    System.out.println();
-  }
-  public static void render(Atm atm, String message) {
-    JSONObject json = atm.toJson().getJSONObject("caixa").append("erros", message);
-
-    System.out.println();
-    System.out.println(json);
-    System.out.println();
+    else
+      return Atm.find(name);
   }
 }

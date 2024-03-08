@@ -18,14 +18,13 @@ public class WithdrawalService {
   }
 
   public void execute() throws ValueUnavailableException {
-    if (withdraw.getValue() > atm.valueAvailable() || (withdraw.getValue() % 10) != 0 ) {
+    if (withdraw.getValue() > atm.valueAvailable() || (withdraw.getValue() % 10) != 0 )
       throw new ValueUnavailableException();
-    }
 
-    selectNotes();
+    atm.removeNotes(selectNotes());
   }
 
-  public void selectNotes() {
+  private JSONObject selectNotes() {
     int dummyValue = withdraw.getValue();
     int notesQuantity;
     JSONObject usedNotes = new JSONObject();
@@ -41,6 +40,6 @@ public class WithdrawalService {
       }
     }
 
-    atm.removeNotes(usedNotes);
+    return usedNotes;
   }
 }
