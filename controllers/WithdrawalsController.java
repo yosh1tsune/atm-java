@@ -4,6 +4,7 @@ import models.Atm;
 import models.Withdraw;
 import models.errors.ValueUnavailableException;
 import models.errors.ATMUnavailableException;
+import models.errors.DuplicatedWithdrawalException;
 import models.errors.InexistentATMException;
 import services.WithdrawalService;
 
@@ -28,7 +29,7 @@ public class WithdrawalsController extends ApplicationController {
       new WithdrawalService(withdrawal, atm).execute();
 
       render(atm);
-    } catch (ParseException | ValueUnavailableException | ATMUnavailableException e) {
+    } catch (ParseException | ValueUnavailableException | DuplicatedWithdrawalException | ATMUnavailableException e) {
       render(atm, e.getMessage());
     } catch (InexistentATMException e) {
       render(e.getMessage());
