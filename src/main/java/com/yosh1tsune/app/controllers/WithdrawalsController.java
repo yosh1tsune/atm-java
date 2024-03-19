@@ -1,18 +1,18 @@
-package controllers;
-
-import models.Atm;
-import models.Withdraw;
-import models.errors.ValueUnavailableException;
-import models.errors.ATMUnavailableException;
-import models.errors.DuplicatedWithdrawalException;
-import models.errors.InexistentATMException;
-import services.WithdrawalService;
+package com.yosh1tsune.app.controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.json.JSONObject;
+
+import com.yosh1tsune.app.models.Atm;
+import com.yosh1tsune.app.models.Withdraw;
+import com.yosh1tsune.app.models.errors.ATMUnavailableException;
+import com.yosh1tsune.app.models.errors.DuplicatedWithdrawalException;
+import com.yosh1tsune.app.models.errors.InexistentATMException;
+import com.yosh1tsune.app.models.errors.ValueUnavailableException;
+import com.yosh1tsune.app.services.WithdrawalService;
 
 public class WithdrawalsController extends ApplicationController {
   private static Atm atm;

@@ -1,4 +1,5 @@
-package models;
+package com.yosh1tsune.app.models;
+
 import java.util.ArrayList;
 
 import org.json.JSONObject;

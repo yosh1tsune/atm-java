@@ -1,4 +1,4 @@
-package models.errors;
+package com.yosh1tsune.app.models.errors;
 
 public class DuplicatedWithdrawalException extends RuntimeException {
   public DuplicatedWithdrawalException() {

@@ -1,4 +1,4 @@
-package models;
+package com.yosh1tsune.app.models;
 
 import java.util.ArrayList;
 import java.util.Date;

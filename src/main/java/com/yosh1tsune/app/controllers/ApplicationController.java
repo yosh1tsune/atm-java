@@ -1,8 +1,8 @@
-package controllers;
+package com.yosh1tsune.app.controllers;
 
 import org.json.JSONObject;
 
-import models.Atm;
+import com.yosh1tsune.app.models.Atm;
 
 public class ApplicationController {
   public static void render(Atm atm) {

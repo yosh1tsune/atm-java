@@ -1,11 +1,11 @@
-package controllers;
-
-import models.Atm;
-import models.Recharge;
-import models.errors.ATMUnderUseException;
-import services.RechargeATMService;
+package com.yosh1tsune.app.controllers;
 
 import org.json.*;
+
+import com.yosh1tsune.app.models.Atm;
+import com.yosh1tsune.app.models.Recharge;
+import com.yosh1tsune.app.models.errors.ATMUnderUseException;
+import com.yosh1tsune.app.services.RechargeATMService;
 
 public class RechargesController extends ApplicationController {
   private static Atm atm;

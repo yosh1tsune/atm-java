@@ -1,12 +1,12 @@
-package services;
-
-import models.Withdraw;
-import models.Atm;
-import models.errors.DuplicatedWithdrawalException;
-import models.errors.ValueUnavailableException;
-import services.WithdrawalService;
+package com.yosh1tsune.app.services;
 
 import org.json.JSONObject;
+
+import com.yosh1tsune.app.models.Atm;
+import com.yosh1tsune.app.models.Withdraw;
+import com.yosh1tsune.app.models.errors.DuplicatedWithdrawalException;
+import com.yosh1tsune.app.models.errors.ValueUnavailableException;
+import com.yosh1tsune.app.services.WithdrawalService;
 
 import java.time.temporal.ChronoUnit;
 

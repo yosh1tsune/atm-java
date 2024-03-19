@@ -1,8 +1,8 @@
-package services;
+package com.yosh1tsune.app.services;
 
-import models.Atm;
-import models.Recharge;
-import models.errors.ATMUnderUseException;
+import com.yosh1tsune.app.models.Atm;
+import com.yosh1tsune.app.models.Recharge;
+import com.yosh1tsune.app.models.errors.ATMUnderUseException;
 
 public class RechargeATMService {
   private Recharge recharge;
