@@ -20,7 +20,7 @@ public class RechargeATMService {
     updateAtm(atm);
   }
 
-  public void updateAtm(Atm atm) {
+  private void updateAtm(Atm atm) {
     atm.setStatus(recharge.getStatus());
     atm.addNotes(recharge.getNotes());
   }
