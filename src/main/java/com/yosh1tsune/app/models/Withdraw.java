@@ -18,6 +18,10 @@ public class Withdraw {
     return withdrawals;
   }
 
+  public static void setWithdrawals(ArrayList<Withdraw> newWithdrawals){
+    withdrawals = newWithdrawals;
+  }
+
   public void save() {
     withdrawals.add(this);
   }

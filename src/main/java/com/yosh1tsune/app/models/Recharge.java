@@ -15,6 +15,14 @@ public class Recharge {
     this.notes = notes;
   }
 
+  public static ArrayList<Recharge> getRecharges(){
+    return recharges;
+  }
+
+  public static void setRecharges(ArrayList<Recharge> newRecharges){
+    recharges = newRecharges;
+  }
+
   public Boolean getStatus() {
     return status;
   }
@@ -23,7 +31,7 @@ public class Recharge {
     return notes;
   }
 
-  public void save(Recharge recharge) {
-    recharges.add(recharge);
+  public void save() {
+    recharges.add(this);
   }
 }

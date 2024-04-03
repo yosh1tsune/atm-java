@@ -18,6 +18,8 @@ public class RechargeATMService {
       throw new ATMUnderUseException();
 
     updateAtm(atm);
+
+    recharge.save();
   }
 
   private void updateAtm(Atm atm) {

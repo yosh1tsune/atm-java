@@ -26,6 +26,12 @@ public class Atm {
     this.notes = new JSONObject("{ notasDez: 0, notasVinte: 0, notasCinquenta: 0, notasCem: 0 }");
   }
 
+  public Atm(Boolean status, JSONObject notes) {
+    this.name = "java";
+    this.status = status;
+    this.notes = notes;
+  }
+
   public static ArrayList<Atm> getAtms() {
     return atms;
   }
