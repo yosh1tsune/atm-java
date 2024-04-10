@@ -3,11 +3,10 @@ package com.yosh1tsune.app.services;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import org.json.JSONObject;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +17,9 @@ import com.yosh1tsune.app.models.errors.ValueUnavailableException;
 
 @DisplayName("Test the withdraw process and persistence of the processed withdraw object.")
 public class WithdrawalServiceTest {
-  @AfterEach
+  @BeforeEach
   void clearDatabase(){
-    Withdraw.setWithdrawals(new ArrayList<Withdraw>());
+    Withdraw.getWithdrawals().clear();;
   }
 
   @Test
