@@ -26,7 +26,7 @@ public class RechargesController extends ApplicationController {
 
   public static Atm atm(String name) {
     if (Atm.getAtms().isEmpty())
-      return Atm.create();
+      return new Atm();
     else
       return Atm.find(name);
   }

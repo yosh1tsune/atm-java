@@ -19,7 +19,7 @@ import com.yosh1tsune.app.models.errors.ValueUnavailableException;
 public class WithdrawalServiceTest {
   @BeforeEach
   void clearDatabase(){
-    Withdraw.getWithdrawals().clear();;
+    Withdraw.getWithdrawals().clear();
   }
 
   @Test

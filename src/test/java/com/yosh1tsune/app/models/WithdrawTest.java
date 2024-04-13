@@ -16,7 +16,7 @@ public class WithdrawTest {
 
   @BeforeEach
   void clearDatabase(){
-    Withdraw.getWithdrawals().clear();;
+    Withdraw.getWithdrawals().clear();
   }
 
   @DisplayName("Successfully instantiate an withdraw object with informed parameters")

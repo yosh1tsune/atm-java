@@ -36,19 +36,15 @@ public class Atm {
     return atms;
   }
 
-  public static Atm create() {
-    return new Atm();
-  }
-
   public static Atm find(String name) {
-    Atm found_atm = null;
+    Atm foundAtm = null;
 
     for (Atm atm: atms) {
       if (atm.name.equals(name))
-        return found_atm = atm;
+        return foundAtm = atm;
     }
 
-    return found_atm;
+    return foundAtm;
   }
 
   public JSONObject toJson() {
