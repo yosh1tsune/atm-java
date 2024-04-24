@@ -51,13 +51,18 @@ public class WithdrawalService {
   private JSONObject selectNotes() {
     int dummyValue = withdraw.getValue();
     int notesQuantity;
+    int notesAvailable;
     JSONObject usedNotes = new JSONObject();
 
     for (JSONObject possibleNotes : Atm.POSSIBLE_NOTES) {
-      if (atm.getNotes().getInt(possibleNotes.getString("name")) == 0)
+      notesAvailable = atm.getNotes().getInt(possibleNotes.getString("name"));
+      if (notesAvailable == 0)
         continue;
 
-      while(dummyValue >= possibleNotes.getInt("nominal_value")) {
+      while(
+        dummyValue >= possibleNotes.getInt("nominal_value") &&
+        (dummyValue <= notesAvailable * possibleNotes.getInt("nominal_value"))
+      ){
         notesQuantity = 0;
         if (dummyValue >= possibleNotes.getInt("nominal_value")) {
           notesQuantity = dummyValue / possibleNotes.getInt("nominal_value");
@@ -67,7 +72,7 @@ public class WithdrawalService {
       }
     }
 
-    if (dummyValue > 0 )
+    if (dummyValue > 0)
       throw new ValueUnavailableException();
 
     return usedNotes;

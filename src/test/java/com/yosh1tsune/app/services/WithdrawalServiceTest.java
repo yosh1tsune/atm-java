@@ -24,10 +24,21 @@ public class WithdrawalServiceTest {
 
   @Test
   @DisplayName("Throw exception if withdraw value is not available")
-  void valueNotAvailable(){
+  void valueUnavailable(){
     JSONObject json = new JSONObject("{ notasDez: 1, notasVinte: 1, notasCinquenta: 1, notasCem: 1 }");
     Atm atm = new Atm(true, json);
     Withdraw withdrawal = new Withdraw(200, new Date());
+
+    assertThrows(ValueUnavailableException.class, () -> new WithdrawalService(withdrawal, atm).execute());
+    assertEquals(atm.getNotes(), json);
+  }
+
+  @Test
+  @DisplayName("Throw exception if notes can't compose requested value")
+  void notesUnavailable(){
+    JSONObject json = new JSONObject("{ notasDez: 2, notasVinte: 0, notasCinquenta: 100, notasCem: 100 }");
+    Atm atm = new Atm(true, json);
+    Withdraw withdrawal = new Withdraw(30, new Date());
 
     assertThrows(ValueUnavailableException.class, () -> new WithdrawalService(withdrawal, atm).execute());
     assertEquals(atm.getNotes(), json);

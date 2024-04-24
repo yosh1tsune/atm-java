@@ -19,10 +19,18 @@ public class AtmTest {
 
   @Test
   @DisplayName("Class method find(), return matching object inside classe variable atms")
-  void find(){
+  void findSuccess(){
     atm.save();
 
     assertEquals(Atm.find("java"), atm);
+  }
+
+  @Test
+  @DisplayName("Class method find(), return null if none object match params")
+  void findFail(){
+    atm.save();
+
+    assertEquals(Atm.find("ruby"), null);
   }
 
   @Test
